@@ -25,6 +25,7 @@ export function PortfolioCard({ item, index }: { item: PortfolioCase; index: num
             branche={item.branche}
             colorFrom={item.colorFrom}
             colorTo={item.colorTo}
+            slug={item.slug}
           />
         </motion.div>
 

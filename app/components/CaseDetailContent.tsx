@@ -57,6 +57,7 @@ export function CaseDetailContent({
             branche={item.branche}
             colorFrom={item.colorFrom}
             colorTo={item.colorTo}
+            slug={item.slug}
           />
         </motion.div>
 
@@ -101,6 +102,7 @@ export function CaseDetailContent({
                   branche={item.branche}
                   colorFrom={item.colorFrom}
                   colorTo={item.colorTo}
+                  slug={item.slug}
                 />
               }
             />

@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { motion } from "motion/react";
-import { CalendarCheck, CheckCircle2, Loader2 } from "lucide-react";
+import { Mail, CheckCircle2, Loader2 } from "lucide-react";
 import { Container } from "./Container";
 import { SplitReveal } from "./SplitReveal";
 import { MagneticButton } from "./MagneticButton";
@@ -63,7 +63,7 @@ export function ContactSection() {
           </span>
           <SplitReveal
             as="h2"
-            text="Lass uns über deine Website sprechen."
+            text="Schreib uns — wir melden uns innerhalb eines Werktags."
             className="mt-4 font-display text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.1] tracking-tight text-ink"
           />
         </div>
@@ -76,12 +76,12 @@ export function ContactSection() {
           className="mt-12 flex flex-col items-start gap-6 rounded-3xl border border-line bg-paper p-8 sm:flex-row sm:items-center sm:justify-between"
         >
           <div className="flex items-start gap-4">
-            <CalendarCheck className="mt-1 shrink-0 text-bordeaux-deep" size={26} />
+            <Mail className="mt-1 shrink-0 text-bordeaux-deep" size={26} />
             <div>
-              <h3 className="font-display text-xl text-ink">Der schnellste Weg</h3>
+              <h3 className="font-display text-xl text-ink">Direkt per E-Mail anfragen</h3>
               <p className="mt-1 max-w-md text-sm leading-relaxed text-ink-soft">
-                Kostenloses, unverbindliches Erstgespräch anfragen — wir melden uns
-                innerhalb von ein bis zwei Werktagen bei dir.
+                Nutze das Formular unten — wir melden uns kostenlos und unverbindlich
+                innerhalb von ein bis zwei Werktagen per E-Mail bei dir.
               </p>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function ContactSection() {
               onClick={focusNameField}
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-bordeaux-deep px-6 py-3.5 text-sm font-medium text-linen transition-colors hover:bg-ink"
             >
-              Erstgespräch anfragen
+              Jetzt anfragen
             </button>
           </MagneticButton>
         </motion.div>

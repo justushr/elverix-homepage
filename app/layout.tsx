@@ -25,12 +25,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://elverix.com"),
   title: {
-    default: `${siteConfig.name} — Moderne Websites für lokale Betriebe`,
+    default: `${siteConfig.name} — Website Agentur aus ${siteConfig.location}`,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
   openGraph: {
-    title: `${siteConfig.name} — Moderne Websites für lokale Betriebe`,
+    title: `${siteConfig.name} — Website Agentur aus ${siteConfig.location}`,
     description: siteConfig.description,
     url: "https://elverix.com",
     locale: "de_DE",

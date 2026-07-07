@@ -76,7 +76,7 @@ export function Header() {
               onClick={(event) => onLinkClick(event, "/#kontakt")}
               className="rounded-full border border-bordeaux/40 bg-bordeaux-soft px-5 py-2.5 text-sm text-bordeaux transition-all hover:border-bordeaux hover:shadow-[0_0_16px_rgba(0,200,255,0.25)]"
             >
-              Erstgespräch
+              Anfragen
             </Link>
           </div>
 
@@ -130,7 +130,7 @@ export function Header() {
                   onClick={(event) => onLinkClick(event, "/#kontakt")}
                   className="mt-6 inline-block rounded-full border border-bordeaux/40 bg-bordeaux-soft px-6 py-3 font-sans text-base text-bordeaux"
                 >
-                  Kostenloses Erstgespräch
+                  Kostenlos anfragen
                 </Link>
               </motion.div>
             </nav>

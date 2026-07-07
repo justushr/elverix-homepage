@@ -76,9 +76,9 @@ export type ProcessStep = {
 export const processSteps: ProcessStep[] = [
   {
     number: "01",
-    title: "Erstgespräch",
+    title: "Erstanfrage",
     description:
-      "Wir hören zu: Was macht deinen Betrieb aus, wer sind deine Kund:innen, was soll die Website leisten?",
+      "Du schreibst uns kurz, was du brauchst — wir melden uns per E-Mail und klären gemeinsam, was deine Website leisten soll.",
   },
   {
     number: "02",
@@ -231,7 +231,7 @@ export const whyItems: WhyItem[] = [
     icon: Rocket,
     title: "Umsetzung in wenigen Wochen",
     description:
-      "Von Erstgespräch bis Launch meist in vier bis sechs Wochen, abhängig vom Umfang — ohne endlose Warteschleifen.",
+      "Von Erstanfrage bis Launch meist in vier bis sechs Wochen, abhängig vom Umfang — ohne endlose Warteschleifen.",
   },
   {
     icon: MapPinned,
@@ -344,7 +344,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Wie lange dauert die Umsetzung?",
     answer:
-      "Je nach Umfang meist vier bis sechs Wochen von Erstgespräch bis Launch. Im Erstgespräch bekommst du einen konkreten Zeitplan für dein Projekt.",
+      "Je nach Umfang meist vier bis sechs Wochen von Erstanfrage bis Launch. Nach deiner Anfrage bekommst du einen konkreten Zeitplan für dein Projekt.",
   },
   {
     question: "Was kosten Domain und Hosting zusätzlich?",
@@ -391,6 +391,7 @@ export const businessTypes: BusinessType[] = [
 export const siteConfig = {
   name: "Elverix",
   email: "hallo@elverix.de",
+  location: "Arnsberg",
   description:
-    "Elverix baut moderne, schnelle Websites für Handwerk, Gastronomie, Praxen und Einzelhandel — mit der Sorgfalt eines guten Handwerksbetriebs.",
+    "Elverix ist eine Website-Agentur aus Arnsberg. Wir bauen moderne, schnelle Websites für Handwerk, Gastronomie, Praxen und Einzelhandel im Sauerland und NRW.",
 };

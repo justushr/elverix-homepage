@@ -3,22 +3,29 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useGSAP } from "@gsap/react";
 import { ArrowRight } from "lucide-react";
 import { ScrollTrigger } from "../lib/gsap";
 import { useAnchorNav, useHasWebGL, useMediaQuery } from "../lib/hooks";
 import { Container } from "./Container";
 import { MagneticButton } from "./MagneticButton";
-import { SplitReveal } from "./SplitReveal";
 import { HeroFallback } from "./HeroFallback";
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
+
+const cyclingPhrases = [
+  "Top Rankings auf Google.",
+  "Anfragen direkt per E-Mail.",
+  "Mehr Kunden rund um die Uhr.",
+  "Eine Website, die verkauft.",
+];
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollProgress = useRef(0);
   const [canRender3D, setCanRender3D] = useState(false);
+  const [phraseIndex, setPhraseIndex] = useState(0);
   const isDesktopViewport = useMediaQuery("(min-width: 768px)");
   const hasWebGL = useHasWebGL();
   const prefersReducedMotion = useReducedMotion();
@@ -27,6 +34,13 @@ export function Hero() {
   useEffect(() => {
     setCanRender3D(isDesktopViewport && hasWebGL === true && !prefersReducedMotion);
   }, [isDesktopViewport, hasWebGL, prefersReducedMotion]);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setPhraseIndex((i) => (i + 1) % cyclingPhrases.length);
+    }, 3500);
+    return () => clearInterval(id);
+  }, []);
 
   useGSAP(
     () => {
@@ -102,12 +116,28 @@ export function Hero() {
           Digitales Handwerk für lokale Betriebe
         </motion.span>
 
-        <SplitReveal
-          as="h1"
-          trigger="mount"
-          text="Deine Website soll verkaufen. Nicht nur existieren."
-          className="max-w-2xl font-display text-[clamp(2.6rem,5.6vw,4.7rem)] font-medium leading-[1.05] tracking-tight text-ink"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="max-w-2xl"
+        >
+          <h1 className="font-display text-[clamp(2.6rem,5.6vw,4.7rem)] font-medium leading-[1.05] tracking-tight">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={phraseIndex}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -14 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="block text-bordeaux-deep"
+              >
+                {cyclingPhrases[phraseIndex]}
+              </motion.span>
+            </AnimatePresence>
+            <span className="block text-ink">Durch deine neue Website.</span>
+          </h1>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -131,7 +161,7 @@ export function Hero() {
               onClick={(event) => handleAnchorClick(event, "/#kontakt")}
               className="inline-flex items-center gap-2 rounded-full bg-bordeaux-deep px-7 py-4 text-base font-medium text-linen shadow-soft transition-all hover:scale-[1.02] hover:shadow-glow"
             >
-              Kostenloses Erstgespräch
+              Kostenlos anfragen
               <ArrowRight size={18} />
             </Link>
           </MagneticButton>

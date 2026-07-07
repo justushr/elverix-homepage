@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bitter, Inter } from "next/font/google";
 import { AnimatePresence, MotionConfig } from "motion/react";
+import Script from "next/script";
 import "./globals.css";
 import { SmoothScrollProvider } from "./lib/smooth-scroll";
 import { Header } from "./components/Header";
@@ -48,6 +49,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className={`${bitter.variable} ${inter.variable}`}>
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8177517019052547"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="bg-linen font-sans text-ink antialiased">
         <MotionConfig reducedMotion="user">
           <SmoothScrollProvider>

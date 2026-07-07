@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "./Container";
 import { SplitReveal } from "./SplitReveal";
-import { pricingPlans } from "../lib/data";
 import { useAnchorNav } from "../lib/hooks";
 
 export function PricingSection() {
@@ -20,70 +19,54 @@ export function PricingSection() {
           </span>
           <SplitReveal
             as="h2"
-            text="Transparente Pakete statt Stundenzettel."
+            text="Faire Preise für individuelle Projekte."
             className="mt-4 font-display text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.1] tracking-tight text-ink"
           />
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {pricingPlans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px" }}
-              transition={{ duration: 0.55, delay: index * 0.1 }}
-              whileHover={{ y: -6 }}
-              className={`flex flex-col rounded-3xl border p-8 transition-shadow duration-300 md:p-9 ${
-                plan.highlighted
-                  ? "border-bordeaux-deep bg-paper shadow-lift ring-1 ring-bordeaux-deep/40"
-                  : "border-line bg-paper shadow-soft"
-              }`}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 0.55 }}
+          className="mt-16 flex flex-col gap-10 rounded-3xl border border-line bg-paper p-10 shadow-soft md:flex-row md:items-center md:justify-between md:p-14"
+        >
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.12em] text-bordeaux-deep">
+              Projektpreis
+            </p>
+            <div className="mt-3 flex items-end gap-3">
+              <span className="font-display text-[clamp(2.8rem,6vw,4.5rem)] font-medium leading-none text-ink">
+                499 €
+              </span>
+              <span className="mb-1.5 font-display text-[clamp(1.4rem,3vw,2.2rem)] font-medium text-ink-soft">
+                – 2.099 €
+              </span>
+            </div>
+            <p className="mt-3 text-sm text-ink-soft">
+              Einmalig, je nach Umfang und Anforderungen deines Projekts.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4 md:items-end">
+            <p className="max-w-xs text-sm leading-relaxed text-ink-soft md:text-right">
+              Dein genaues Angebot besprechen wir kostenlos und unverbindlich
+              im Erstgespräch.
+            </p>
+            <Link
+              href="/#kontakt"
+              onClick={(event) => handleAnchorClick(event, "/#kontakt")}
+              className="inline-flex items-center gap-2 rounded-full bg-bordeaux-deep px-6 py-3.5 text-sm font-medium text-linen transition-colors hover:bg-ink"
             >
-              {plan.highlighted && (
-                <span className="mb-4 w-fit rounded-full bg-bordeaux-deep px-3 py-1 text-xs font-medium text-linen">
-                  Beliebteste Wahl
-                </span>
-              )}
+              Kostenloses Gespräch vereinbaren
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        </motion.div>
 
-              <h3 className="font-display text-2xl text-ink">{plan.name}</h3>
-              <p className="mt-1 text-sm text-ink-soft">{plan.tagline}</p>
-
-              <div className="mt-6">
-                <span className="font-display text-4xl text-ink">{plan.price}</span>
-                <p className="mt-1 text-xs uppercase tracking-[0.08em] text-ink-soft">
-                  {plan.priceNote}
-                </p>
-              </div>
-
-              <ul className="mt-8 flex-1 space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-sm text-ink-soft">
-                    <Check size={17} className="mt-0.5 shrink-0 text-bordeaux-deep" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href="/#kontakt"
-                onClick={(event) => handleAnchorClick(event, "/#kontakt")}
-                className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-medium transition-colors ${
-                  plan.highlighted
-                    ? "bg-bordeaux-deep text-linen hover:bg-ink"
-                    : "bg-ink text-linen hover:bg-bordeaux-deep"
-                }`}
-              >
-                {plan.ctaLabel}
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-
-        <p className="mt-10 max-w-2xl text-sm text-ink-soft">
-          Alle Preise sind Beispielwerte zur Orientierung und verstehen sich zzgl.
-          gesetzlicher Mehrwertsteuer. Dein individuelles Angebot besprechen wir im
-          kostenlosen Erstgespräch.
+        <p className="mt-8 max-w-2xl text-sm text-ink-soft">
+          Alle Preise verstehen sich zzgl. gesetzlicher Mehrwertsteuer. Was im
+          Angebot steht, ist der Preis, den du zahlst — keine versteckten Kosten.
         </p>
       </Container>
     </section>

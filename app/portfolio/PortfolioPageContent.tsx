@@ -8,7 +8,7 @@ import { Container } from "../components/Container";
 import { SplitReveal } from "../components/SplitReveal";
 import { PortfolioCard } from "../components/PortfolioCard";
 
-const PLACEHOLDER_COUNT = 4;
+const PLACEHOLDER_COUNT = 3;
 
 function PlaceholderCard({ index }: { index: number }) {
   return (

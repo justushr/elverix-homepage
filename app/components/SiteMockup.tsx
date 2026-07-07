@@ -69,35 +69,115 @@ export function SiteMockup({
   }
 
   return (
-    <div className="flex h-full w-full flex-col bg-linen">
-      <div className="flex items-center gap-1.5 border-b border-line bg-paper px-3 py-2">
-        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: `${colorFrom}66` }} />
-        <span className="h-2.5 w-2.5 rounded-full bg-pine/30" />
-        <span className="h-2.5 w-2.5 rounded-full bg-ink-faint/30" />
-        <span className="ml-3 truncate rounded-full bg-linen-2 px-3 py-0.5 text-[10px] text-ink-soft">
+    <div
+      className="flex h-full w-full flex-col overflow-hidden"
+      style={{ backgroundColor: colorTo }}
+    >
+      {/* Browser chrome */}
+      <div
+        className="flex shrink-0 items-center gap-1.5 px-3 py-2"
+        style={{
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          backgroundColor: "rgba(255,255,255,0.03)",
+        }}
+      >
+        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: `${colorFrom}70` }} />
+        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "rgba(255,255,255,0.14)" }} />
+        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "rgba(255,255,255,0.08)" }} />
+        <span
+          className="ml-3 truncate rounded-full px-3 py-0.5 text-[9px]"
+          style={{ backgroundColor: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.35)" }}
+        >
           {slugify(businessName)}.de
         </span>
       </div>
+
+      {/* Page */}
       <div
-        className="flex flex-1 flex-col justify-between gap-4 p-5 sm:p-7"
-        style={{ background: `linear-gradient(160deg, ${colorFrom}1f, transparent 65%)` }}
+        className="relative flex flex-1 flex-col overflow-hidden"
+        style={{
+          background: `radial-gradient(ellipse 90% 65% at 15% 5%, ${colorFrom}25, transparent 65%)`,
+        }}
       >
-        <div>
-          <span className="text-[10px] uppercase tracking-[0.16em] text-ink-faint">{branche}</span>
-          <p className="mt-2 max-w-[20ch] font-display text-lg leading-snug text-ink sm:text-2xl">
-            {businessName}
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
+        {/* Nav */}
+        <div className="flex shrink-0 items-center justify-between px-4 py-2.5 sm:px-5">
           <span
-            className="rounded-full px-4 py-2 text-[11px] font-medium text-linen sm:text-xs"
-            style={{ backgroundColor: colorTo }}
+            className="max-w-[16ch] truncate text-[10px] font-bold tracking-tight sm:text-[11px]"
+            style={{ color: colorFrom }}
           >
-            Jetzt anfragen
+            {businessName}
           </span>
-          <span className="text-[10px] text-ink-soft underline underline-offset-2 sm:text-xs">
-            Mehr erfahren
-          </span>
+          <div
+            className="rounded-full px-2.5 py-1 text-[8px] font-semibold sm:text-[9px]"
+            style={{ backgroundColor: colorFrom, color: "#fff" }}
+          >
+            Anfragen
+          </div>
+        </div>
+
+        {/* Hero */}
+        <div className="flex flex-1 flex-col justify-center px-4 sm:px-5">
+          <p
+            className="text-[8px] uppercase tracking-[0.14em] sm:text-[9px]"
+            style={{ color: `${colorFrom}80` }}
+          >
+            {branche}
+          </p>
+          <h2
+            className="mt-1.5 font-bold leading-tight sm:mt-2"
+            style={{
+              color: "#fff",
+              fontSize: "clamp(11px, 2.6vw, 20px)",
+              maxWidth: "14ch",
+            }}
+          >
+            {businessName}
+          </h2>
+          <p
+            className="mt-1.5 text-[8px] leading-relaxed sm:text-[9px]"
+            style={{ color: "rgba(255,255,255,0.4)", maxWidth: "24ch" }}
+          >
+            Qualität & Verlässlichkeit — für Sie vor Ort.
+          </p>
+          <div className="mt-3 flex items-center gap-2">
+            <span
+              className="rounded-full px-3 py-1 text-[8px] font-semibold sm:text-[9px]"
+              style={{ backgroundColor: colorFrom, color: "#fff" }}
+            >
+              Jetzt anfragen
+            </span>
+            <span
+              className="text-[8px] underline underline-offset-2 sm:text-[9px]"
+              style={{ color: "rgba(255,255,255,0.3)" }}
+            >
+              Mehr erfahren
+            </span>
+          </div>
+        </div>
+
+        {/* Feature row */}
+        <div className="grid shrink-0 grid-cols-3 gap-1.5 px-4 pb-4 sm:px-5">
+          {["Qualität", "Erfahrung", "Service"].map((label) => (
+            <div
+              key={label}
+              className="rounded-lg p-2 sm:p-2.5"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.04)",
+                border: `1px solid ${colorFrom}22`,
+              }}
+            >
+              <div
+                className="mb-1.5 h-1.5 w-1.5 rounded-full"
+                style={{ backgroundColor: `${colorFrom}90` }}
+              />
+              <p
+                className="text-[7px] font-medium sm:text-[8px]"
+                style={{ color: "rgba(255,255,255,0.45)" }}
+              >
+                {label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

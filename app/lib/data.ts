@@ -127,6 +127,22 @@ export type PortfolioCase = {
 
 export const portfolioCases: PortfolioCase[] = [
   {
+    slug: "baeckerei-muehlenbeck",
+    branche: "Bäckerei",
+    name: "Bäckerei Mühlenbeck",
+    title: "Frisch aus dem Ofen — auch online vorbestellbar",
+    summary:
+      "Wie eine Familienbäckerei mit 40 Jahren Geschichte online genauso einladend wird wie der Laden selbst.",
+    challenge:
+      "Die Bäckerei Mühlenbeck war in der Nachbarschaft längst eine Institution — online war sie kaum auffindbar. Bestellungen liefen ausschließlich über Telefon und persönlichen Besuch. Wer seinen Lieblingsbrotkranz für den Samstag reservieren wollte, musste früh genug in der Schlange stehen.",
+    solution:
+      "Eine warme, handwerklich gestaltete Website mit Tagesangeboten, saisonalen Highlights und einem einfachen Vorbestell-Formular. Design und Sprache transportieren das Handwerk hinter jedem Laib — authentisch, appetitlich und sofort vertrauenswürdig.",
+    outcome:
+      "Ein digitales Schaufenster, das rund um die Uhr geöffnet ist. Vorbestellungen gehen jetzt online ein, der Samstagmorgen ist entspannter — und neue Stammkunden finden die Bäckerei über Google.",
+    colorFrom: "#d97706",
+    colorTo: "#1c1917",
+  },
+  {
     slug: "trattoria-rosso",
     branche: "Restaurant",
     name: "Trattoria Rosso",

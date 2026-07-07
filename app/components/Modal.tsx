@@ -65,7 +65,7 @@ export function Modal({ children, title }: { children: ReactNode; title: string 
         aria-hidden="true"
       />
 
-      <div className="relative flex min-h-full items-start justify-center sm:items-center sm:p-6">
+      <div className="relative flex min-h-full items-start justify-center py-6 sm:px-6 sm:py-10">
         <motion.div
           ref={panelRef}
           role="dialog"

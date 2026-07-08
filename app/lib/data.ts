@@ -406,7 +406,7 @@ export const businessTypes: BusinessType[] = [
 
 export const siteConfig = {
   name: "Elverix",
-  email: "hallo@elverix.de",
+  email: "kontakt@elverix.com",
   location: "Arnsberg",
   description:
     "Elverix ist eine Website-Agentur aus Arnsberg. Wir bauen moderne, schnelle Websites für Handwerk, Gastronomie, Praxen und Einzelhandel im Sauerland und NRW.",

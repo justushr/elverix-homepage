@@ -50,22 +50,26 @@ export async function POST(request: Request) {
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  await resend.emails.send({
-    from: "Elverix Kontakt <kontakt@elverix.com>",
-    to: "justusharde@gmail.com",
-    replyTo: email,
-    subject: `Neue Anfrage von ${name} — ${businessType}`,
-    html: `
-      <h2>Neue Kontaktanfrage über elverix.com</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>E-Mail:</strong> ${email}</p>
-      <p><strong>Betriebsart:</strong> ${businessType}</p>
-      <p><strong>Website-Check gewünscht:</strong> ${websiteCheck ? "Ja" : "Nein"}</p>
-      <hr />
-      <p><strong>Nachricht:</strong></p>
-      <p>${message.replace(/\n/g, "<br />")}</p>
-    `,
-  });
+  try {
+    await resend.emails.send({
+      from: "Elverix Kontakt <kontakt@elverix.com>",
+      to: "justusharde@gmail.com",
+      replyTo: email,
+      subject: `Neue Anfrage von ${name} — ${businessType}`,
+      html: `
+        <h2>Neue Kontaktanfrage über elverix.com</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>E-Mail:</strong> ${email}</p>
+        <p><strong>Betriebsart:</strong> ${businessType}</p>
+        <p><strong>Website-Check gewünscht:</strong> ${websiteCheck ? "Ja" : "Nein"}</p>
+        <hr />
+        <p><strong>Nachricht:</strong></p>
+        <p>${message.replace(/\n/g, "<br />")}</p>
+      `,
+    });
+  } catch {
+    return NextResponse.json({ error: "E-Mail konnte nicht gesendet werden." }, { status: 500 });
+  }
 
   return NextResponse.json({ success: true });
 }

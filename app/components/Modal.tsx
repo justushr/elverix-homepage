@@ -78,7 +78,7 @@ export function Modal({ children, title }: { children: ReactNode; title: string 
         <X size={20} />
       </button>
 
-      <div className="relative h-full overflow-y-auto">
+      <div className="relative h-full overflow-y-auto" data-lenis-prevent>
         <div className="flex min-h-full items-start justify-center pb-6 pt-16 sm:px-6 sm:pb-10">
           <motion.div
             ref={panelRef}

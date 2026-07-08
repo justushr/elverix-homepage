@@ -51,7 +51,7 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   await resend.emails.send({
-    from: "Elverix Kontakt <onboarding@resend.dev>",
+    from: "Elverix Kontakt <kontakt@elverix.com>",
     to: "justusharde@gmail.com",
     replyTo: email,
     subject: `Neue Anfrage von ${name} — ${businessType}`,

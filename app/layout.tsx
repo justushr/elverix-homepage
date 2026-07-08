@@ -35,6 +35,20 @@ export const metadata: Metadata = {
     url: "https://elverix.com",
     locale: "de_DE",
     type: "website",
+    images: [
+      {
+        url: "https://elverix.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Elverix — Moderne Websites für lokale Betriebe",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — Website Agentur aus ${siteConfig.location}`,
+    description: siteConfig.description,
+    images: ["https://elverix.com/opengraph-image"],
   },
   alternates: {
     canonical: "https://elverix.com",
@@ -74,6 +88,81 @@ export default function RootLayout({
             gtag('config', 'G-BKV8C5V5BG');
           `}
         </Script>
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://elverix.com/#organization",
+                  name: "Elverix",
+                  url: "https://elverix.com",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://elverix.com/opengraph-image",
+                    width: 1200,
+                    height: 630,
+                  },
+                  image: "https://elverix.com/opengraph-image",
+                  email: "kontakt@elverix.com",
+                  description:
+                    "Elverix ist eine Website-Agentur aus Arnsberg. Wir bauen moderne, schnelle Websites für Handwerk, Gastronomie, Praxen und Einzelhandel im Sauerland und NRW.",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Arnsberg",
+                    addressRegion: "Nordrhein-Westfalen",
+                    addressCountry: "DE",
+                  },
+                  areaServed: [
+                    { "@type": "City", name: "Arnsberg" },
+                    { "@type": "AdministrativeArea", name: "Sauerland" },
+                    { "@type": "State", name: "Nordrhein-Westfalen" },
+                  ],
+                  hasOfferCatalog: {
+                    "@type": "OfferCatalog",
+                    name: "Website-Erstellung für lokale Betriebe",
+                    itemListElement: [
+                      {
+                        "@type": "Offer",
+                        name: "Website für Handwerksbetriebe",
+                        description:
+                          "Professionelle Websites für Schreiner, Elektriker, Maler und andere Handwerksbetriebe im Sauerland und NRW.",
+                      },
+                      {
+                        "@type": "Offer",
+                        name: "Website für Gastronomie",
+                        description:
+                          "Moderne Restaurant-Websites mit Online-Reservierung, Speisekarte und Tagesangeboten.",
+                      },
+                      {
+                        "@type": "Offer",
+                        name: "Website für Arztpraxen",
+                        description:
+                          "Professionelle Websites für Arztpraxen, Zahnarztpraxen und medizinische Einrichtungen mit Online-Terminbuchung.",
+                      },
+                      {
+                        "@type": "Offer",
+                        name: "Website für Einzelhandel",
+                        description:
+                          "Online-Auftritte für lokale Einzelhändler, Boutiquen und Fachgeschäfte.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://elverix.com/#website",
+                  url: "https://elverix.com",
+                  name: "Elverix — Moderne Websites für lokale Betriebe",
+                  publisher: { "@id": "https://elverix.com/#organization" },
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="bg-linen font-sans text-ink antialiased">
         <MotionConfig reducedMotion="user">

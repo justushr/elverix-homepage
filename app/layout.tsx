@@ -61,6 +61,19 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-BKV8C5V5BG"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BKV8C5V5BG');
+          `}
+        </Script>
       </head>
       <body className="bg-linen font-sans text-ink antialiased">
         <MotionConfig reducedMotion="user">

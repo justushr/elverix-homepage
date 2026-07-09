@@ -17,44 +17,26 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-img{max-width:100%;display:block}
+img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 
 /* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:0 max(24px,5vw);
-  display:flex;align-items:center;justify-content:space-between;
-  height:68px;
-  background:rgba(8,8,8,0.7);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  transition:background .3s;
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 max(24px,5vw);display:flex;align-items:center;justify-content:space-between;height:68px;background:rgba(8,8,8,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .3s}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:-.3px}
 .nav-logo-icon{width:30px;height:30px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center}
 .nav-logo-icon svg{width:16px;height:16px;fill:#fff}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{font-size:14px;color:var(--text2);transition:color .2s}
 .nav-links a:hover{color:var(--text)}
-.nav-cta{
-  background:var(--accent);color:#fff;font-size:14px;font-weight:600;
-  padding:9px 20px;border-radius:var(--rfull);
-  transition:background .2s,transform .15s;white-space:nowrap;
-}
+.nav-cta{background:var(--accent);color:#fff;font-size:14px;font-weight:600;padding:9px 20px;border-radius:var(--rfull);transition:background .2s,transform .15s;white-space:nowrap}
 .nav-cta:hover{background:var(--accent2);transform:scale(1.02)}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-mobile{
-  display:none;position:fixed;top:68px;left:0;right:0;z-index:99;
-  background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);
-  padding:24px max(24px,5vw) 32px;border-bottom:1px solid var(--border);
-  flex-direction:column;gap:0;
-}
+.nav-mobile{display:none;position:fixed;top:68px;left:0;right:0;z-index:99;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:24px max(24px,5vw) 32px;border-bottom:1px solid var(--border);flex-direction:column}
 .nav-mobile.open{display:flex}
 .nav-mobile a{padding:14px 0;border-bottom:1px solid var(--border);font-size:16px;color:var(--text2)}
 .nav-mobile a:last-child{border-bottom:none}
@@ -62,175 +44,103 @@ nav{
 
 /* ── HERO ── */
 .hero{
-  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-  padding:120px max(24px,8vw) 80px;
+  min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 max(24px,8vw) 80px;
   position:relative;overflow:hidden;
 }
-.hero-bg{
-  position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 60% at 80% 20%,rgba(249,115,22,.12) 0%,transparent 60%),
-    radial-gradient(ellipse 40% 40% at 20% 80%,rgba(249,115,22,.05) 0%,transparent 60%);
+.hero-bg-img{position:absolute;inset:0;z-index:0}
+.hero-bg-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top, rgba(8,8,8,0.96) 0%, rgba(8,8,8,0.55) 50%, rgba(8,8,8,0.25) 100%);
 }
-.hero-grid{
-  position:absolute;inset:0;pointer-events:none;opacity:.25;
-  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 100%);
-}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  border:1px solid rgba(249,115,22,.3);background:rgba(249,115,22,.08);
-  color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  padding:6px 14px;border-radius:var(--rfull);margin-bottom:28px;width:fit-content;
-}
+.hero-content{position:relative;z-index:2;max-width:700px;padding-bottom:0}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(249,115,22,.3);background:rgba(249,115,22,.08);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:var(--rfull);margin-bottom:24px;width:fit-content}
 .hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.hero h1{
-  font-size:clamp(48px,8vw,96px);font-weight:900;line-height:.95;
-  letter-spacing:-3px;margin-bottom:28px;max-width:12ch;
-}
+.hero h1{font-size:clamp(52px,9vw,108px);font-weight:900;line-height:.92;letter-spacing:-3px;margin-bottom:24px}
 .hero h1 .accent{color:var(--accent);display:block}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text2);max-width:42ch;line-height:1.7;margin-bottom:40px}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.btn-primary{
-  background:var(--accent);color:#fff;font-size:15px;font-weight:700;
-  padding:14px 28px;border-radius:var(--rfull);border:none;cursor:pointer;
-  transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;
-}
+.hero-sub{font-size:clamp(16px,1.8vw,19px);color:rgba(255,255,255,.6);max-width:44ch;line-height:1.7;margin-bottom:36px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:56px}
+.btn-primary{background:var(--accent);color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:var(--rfull);border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px}
 .btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
-.btn-secondary{
-  color:var(--text2);font-size:15px;font-weight:500;
-  padding:14px 28px;border-radius:var(--rfull);border:1px solid var(--border2);
-  transition:border-color .2s,color .2s;cursor:pointer;background:transparent;
-}
+.btn-secondary{color:var(--text2);font-size:15px;font-weight:500;padding:14px 28px;border-radius:var(--rfull);border:1px solid var(--border2);transition:.2s;cursor:pointer;background:transparent}
 .btn-secondary:hover{border-color:var(--accent);color:var(--text)}
-.hero-stats{
-  display:flex;gap:48px;margin-top:72px;padding-top:40px;
-  border-top:1px solid var(--border);flex-wrap:wrap;
-}
+.hero-stats{display:flex;gap:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.12);flex-wrap:wrap}
 .hero-stat .num{font-size:36px;font-weight:900;letter-spacing:-1px;color:var(--accent)}
-.hero-stat .label{font-size:13px;color:var(--text3);margin-top:2px}
+.hero-stat .label{font-size:12px;color:var(--text3);margin-top:2px}
 
 /* ── SECTION BASE ── */
 section{padding:100px max(24px,8vw)}
-.section-tag{
-  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:16px;
-}
+.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .section-title{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:16px}
 .section-sub{font-size:16px;color:var(--text2);max-width:48ch;line-height:1.7}
 
 /* ── SERVICES ── */
 .services{background:var(--bg2)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;margin-top:56px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.service-card{
-  background:var(--bg2);padding:36px 32px;
-  transition:background .25s;position:relative;overflow:hidden;
-}
-.service-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,var(--accent-dim),transparent);
-  opacity:0;transition:opacity .3s;
-}
+.service-card{background:var(--bg2);overflow:hidden;position:relative;transition:background .25s}
 .service-card:hover{background:var(--bg3)}
-.service-card:hover::before{opacity:1}
-.service-icon{
-  width:48px;height:48px;border-radius:12px;
-  background:var(--accent-dim);border:1px solid rgba(249,115,22,.2);
-  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
-}
-.service-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.service-card-img{height:180px;overflow:hidden}
+.service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.service-card:hover .service-card-img img{transform:scale(1.06)}
+.service-body{padding:24px 28px 28px}
+.service-icon{width:44px;height:44px;border-radius:10px;background:var(--accent-dim);border:1px solid rgba(249,115,22,.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .service-card h3{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
 .service-card p{font-size:14px;color:var(--text2);line-height:1.7}
 
 /* ── RESULTS ── */
 .results{background:var(--bg)}
 .results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px}
-.result-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);
-  overflow:hidden;transition:transform .3s,border-color .3s;
-}
+.result-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .3s,border-color .3s}
 .result-card:hover{transform:translateY(-4px);border-color:rgba(249,115,22,.25)}
-.result-visual{
-  height:180px;display:flex;align-items:center;justify-content:center;
-  font-size:48px;font-weight:900;letter-spacing:-2px;
-  position:relative;overflow:hidden;
+.result-img{height:220px;position:relative;overflow:hidden}
+.result-img img{width:100%;height:100%;object-fit:cover;filter:saturate(0.7);transition:filter .4s,transform .5s}
+.result-card:hover .result-img img{filter:saturate(1);transform:scale(1.04)}
+.result-stat{
+  position:absolute;bottom:12px;left:12px;
+  background:rgba(8,8,8,.85);backdrop-filter:blur(8px);
+  border:1px solid rgba(249,115,22,.4);border-radius:var(--rfull);
+  padding:6px 14px;font-size:20px;font-weight:900;color:var(--accent);letter-spacing:-1px;
 }
-.result-card:nth-child(1) .result-visual{background:linear-gradient(135deg,#1a1010,#2d1a10);color:var(--accent)}
-.result-card:nth-child(2) .result-visual{background:linear-gradient(135deg,#0d1a10,#102d16);color:#4ade80}
-.result-card:nth-child(3) .result-visual{background:linear-gradient(135deg,#10101a,#14102d);color:#a78bfa}
-.result-bar{height:3px;width:100%;background:var(--border)}
-.result-bar-fill{height:100%;border-radius:2px;transition:width 1.5s ease}
-.result-card:nth-child(1) .result-bar-fill{background:var(--accent);width:82%}
-.result-card:nth-child(2) .result-bar-fill{background:#4ade80;width:67%}
-.result-card:nth-child(3) .result-bar-fill{background:#a78bfa;width:91%}
 .result-body{padding:20px 24px}
 .result-body strong{font-size:15px;font-weight:700;display:block;margin-bottom:6px}
 .result-body p{font-size:13px;color:var(--text2);line-height:1.6}
-.result-quote{
-  margin-top:12px;padding:12px 14px;background:rgba(255,255,255,.03);
-  border-left:2px solid var(--accent);border-radius:4px;
-  font-size:13px;color:var(--text2);font-style:italic;line-height:1.6;
-}
+.result-quote{margin-top:12px;padding:12px 14px;background:rgba(255,255,255,.03);border-left:2px solid var(--accent);border-radius:4px;font-size:13px;color:var(--text2);font-style:italic;line-height:1.6}
 
 /* ── ABOUT ── */
 .about{background:var(--bg2)}
-.about-inner{
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
-}
-.about-visual{
-  aspect-ratio:4/5;background:var(--bg3);border-radius:24px;
-  border:1px solid var(--border);position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-}
-.about-avatar{
-  width:180px;height:180px;border-radius:50%;
-  background:linear-gradient(135deg,#2a1810,#1a0a00);
-  border:3px solid var(--accent);
-  display:flex;align-items:center;justify-content:center;
-  font-size:72px;font-weight:900;color:var(--accent);
-  position:relative;z-index:1;
-}
-.about-visual::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 80% at 50% 30%,rgba(249,115,22,.08),transparent 70%);
-}
-.about-badge{
-  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-  background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);
-  color:var(--accent);font-size:12px;font-weight:700;
-  padding:8px 16px;border-radius:var(--rfull);white-space:nowrap;
-  backdrop-filter:blur(12px);
-}
-.about-content .section-title{margin-bottom:20px}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-visual{aspect-ratio:4/5;border-radius:24px;overflow:hidden;position:relative;box-shadow:0 8px 48px rgba(0,0,0,.5)}
+.about-visual img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.about-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.6) 0%,transparent 50%)}
+.about-badge{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);color:var(--accent);font-size:12px;font-weight:700;padding:8px 16px;border-radius:var(--rfull);white-space:nowrap;backdrop-filter:blur(12px);z-index:1}
 .about-text{font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:24px}
 .about-certs{display:flex;flex-direction:column;gap:12px;margin-top:32px}
-.about-cert{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);
-  font-size:14px;font-weight:500;
-}
-.about-cert::before{content:'✓';width:24px;height:24px;background:var(--accent-dim);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;line-height:1}
-.cert-icon{width:24px;height:24px;background:var(--accent-dim);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;flex-shrink:0}
+.about-cert{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);font-size:14px;font-weight:500}
+.cert-check{width:24px;height:24px;background:var(--accent-dim);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--bg2)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px}
+.testi-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;transition:border-color .3s}
+.testi-card:hover{border-color:rgba(249,115,22,.2)}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px}
+.testi-stars span{color:var(--accent);font-size:14px}
+.testi-text{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(249,115,22,.3);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:var(--accent);flex-shrink:0}
+.testi-name{font-weight:700;font-size:14px}
+.testi-meta{font-size:12px;color:var(--text3);margin-top:2px}
 
 /* ── PRICING ── */
 .pricing{background:var(--bg)}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:56px}
-.pricing-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:20px;
-  padding:32px 28px;transition:transform .3s,border-color .3s;position:relative;
-}
+.pricing-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px 28px;transition:transform .3s,border-color .3s;position:relative}
 .pricing-card:hover{transform:translateY(-4px)}
-.pricing-card.popular{
-  border-color:var(--accent);background:var(--bg3);
-}
-.popular-badge{
-  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  background:var(--accent);color:#fff;font-size:11px;font-weight:800;
-  letter-spacing:.08em;text-transform:uppercase;
-  padding:5px 16px;border-radius:var(--rfull);white-space:nowrap;
-}
+.pricing-card.popular{border-color:var(--accent);background:var(--bg3)}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 16px;border-radius:var(--rfull);white-space:nowrap}
 .pricing-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:8px}
 .pricing-price{font-size:48px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:4px}
 .pricing-price span{font-size:18px;font-weight:500;color:var(--text2);letter-spacing:0}
@@ -240,65 +150,28 @@ section{padding:100px max(24px,8vw)}
 .pricing-feature{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2)}
 .pricing-feature::before{content:'→';color:var(--accent);font-weight:700;flex-shrink:0}
 .pricing-card.popular .pricing-feature::before{content:'✓'}
-.pricing-btn{
-  width:100%;padding:13px;border-radius:var(--rfull);font-size:14px;font-weight:700;
-  cursor:pointer;border:none;transition:.2s;
-}
+.pricing-btn{width:100%;padding:13px;border-radius:var(--rfull);font-size:14px;font-weight:700;cursor:pointer;border:none;transition:.2s;font-family:inherit}
 .pricing-card:not(.popular) .pricing-btn{background:var(--bg4);color:var(--text2);border:1px solid var(--border)}
 .pricing-card:not(.popular) .pricing-btn:hover{background:var(--bg3);color:var(--text)}
 .pricing-card.popular .pricing-btn{background:var(--accent);color:#fff}
 .pricing-card.popular .pricing-btn:hover{background:var(--accent2)}
 
-/* ── TESTIMONIALS ── */
-.testimonials{background:var(--bg2)}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px}
-.testi-card{
-  background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);
-  padding:28px 24px;transition:border-color .3s;
-}
-.testi-card:hover{border-color:rgba(249,115,22,.2)}
-.testi-stars{display:flex;gap:3px;margin-bottom:16px}
-.testi-stars span{color:var(--accent);font-size:14px}
-.testi-text{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:20px;font-style:italic}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-avatar{
-  width:40px;height:40px;border-radius:50%;
-  background:var(--accent-dim);border:1px solid rgba(249,115,22,.3);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:14px;color:var(--accent);flex-shrink:0;
-}
-.testi-name{font-weight:700;font-size:14px}
-.testi-meta{font-size:12px;color:var(--text3);margin-top:2px}
-
 /* ── FAQ ── */
-.faq{background:var(--bg)}
+.faq{background:var(--bg2)}
 .faq-list{margin-top:56px;display:flex;flex-direction:column;gap:2px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
 .faq-item{background:var(--bg2);border-bottom:1px solid var(--border)}
 .faq-item:last-child{border-bottom:none}
-.faq-q{
-  width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;
-  padding:22px 28px;background:none;border:none;color:var(--text);
-  font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:background .2s;
-}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 28px;background:none;border:none;color:var(--text);font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:background .2s;font-family:inherit}
 .faq-q:hover{background:var(--bg3)}
-.faq-icon{width:24px;height:24px;border-radius:50%;border:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,border-color .3s}
+.faq-icon{width:24px;height:24px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,border-color .3s}
 .faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--accent)}
 .faq-icon svg{width:10px;height:10px;stroke:var(--text2);stroke-width:2.5;fill:none}
-.faq-a{
-  max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;
-  font-size:14px;color:var(--text2);line-height:1.7;
-}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:14px;color:var(--text2);line-height:1.7}
 .faq-item.open .faq-a{max-height:200px;padding:0 28px 22px}
 
 /* ── CONTACT ── */
-.contact{
-  background:var(--bg2);
-}
+.contact{background:var(--bg2)}
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.contact-info{padding-top:8px}
-.contact-info .section-title{margin-bottom:16px}
-.contact-info .section-sub{margin-bottom:32px}
 .contact-detail{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px}
 .contact-detail:last-child{border-bottom:none}
 .contact-detail-icon{width:36px;height:36px;background:var(--accent-dim);border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -307,34 +180,19 @@ form{display:flex;flex-direction:column;gap:16px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-group label{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.08em}
-.form-group input,.form-group select,.form-group textarea{
-  background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);
-  color:var(--text);font-size:14px;font-family:inherit;
-  padding:12px 14px;transition:border-color .2s;outline:none;resize:vertical;
-}
+.form-group input,.form-group select,.form-group textarea{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);color:var(--text);font-size:14px;font-family:inherit;padding:12px 14px;transition:border-color .2s;outline:none;resize:vertical}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
 .form-group select option{background:var(--bg3)}
 .form-group textarea{min-height:100px}
-.form-submit{
-  background:var(--accent);color:#fff;border:none;border-radius:var(--rfull);
-  padding:14px;font-size:15px;font-weight:700;cursor:pointer;
-  transition:background .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:8px;
-  font-family:inherit;
-}
+.form-submit{background:var(--accent);color:#fff;border:none;border-radius:var(--rfull);padding:14px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit}
 .form-submit:hover{background:var(--accent2);transform:translateY(-1px)}
-.form-success{
-  display:none;text-align:center;padding:40px 24px;
-  border:1px solid rgba(74,222,128,.3);border-radius:var(--r);background:rgba(74,222,128,.05);
-}
+.form-success{display:none;text-align:center;padding:40px 24px;border:1px solid rgba(74,222,128,.3);border-radius:var(--r);background:rgba(74,222,128,.05)}
 .form-success svg{width:48px;height:48px;stroke:#4ade80;fill:none;stroke-width:1.5;margin:0 auto 16px}
 .form-success h3{font-size:20px;font-weight:700;margin-bottom:8px}
 .form-success p{font-size:14px;color:var(--text2)}
 
 /* ── FOOTER ── */
-footer{
-  background:var(--bg);border-top:1px solid var(--border);
-  padding:56px max(24px,8vw) 32px;
-}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:56px max(24px,8vw) 32px}
 .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
 .footer-brand .nav-logo{margin-bottom:16px}
 .footer-brand p{font-size:14px;color:var(--text3);line-height:1.7;max-width:30ch}
@@ -342,28 +200,17 @@ footer{
 .footer-col ul{display:flex;flex-direction:column;gap:10px}
 .footer-col ul a{font-size:14px;color:var(--text2);transition:color .2s}
 .footer-col ul a:hover{color:var(--text)}
-.footer-bottom{
-  padding-top:24px;border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-  font-size:13px;color:var(--text3);
-}
+.footer-bottom{padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text3)}
 .footer-bottom a{color:var(--text3);transition:color .2s}
 .footer-bottom a:hover{color:var(--text2)}
 
 /* ── ELVERIX BADGE ── */
-.elverix-badge{
-  position:fixed;bottom:24px;right:24px;z-index:200;
-  background:rgba(8,8,8,.9);border:1px solid var(--border2);border-radius:var(--rfull);
-  backdrop-filter:blur(20px);
-  padding:8px 16px 8px 10px;display:flex;align-items:center;gap:8px;
-  font-size:12px;color:var(--text2);transition:border-color .2s;
-  text-decoration:none;
-}
+.elverix-badge{position:fixed;bottom:24px;right:24px;z-index:200;background:rgba(8,8,8,.9);border:1px solid var(--border2);border-radius:var(--rfull);backdrop-filter:blur(20px);padding:8px 16px 8px 10px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);transition:border-color .2s;text-decoration:none}
 .elverix-badge:hover{border-color:var(--accent)}
 .elverix-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .elverix-badge strong{color:var(--text);font-weight:700}
 
-/* ── SCROLL ANIMATIONS ── */
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 .reveal-delay-1{transition-delay:.1s}
@@ -373,7 +220,7 @@ footer{
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   .about-inner,.contact-inner{grid-template-columns:1fr;gap:48px}
-  .about-visual{aspect-ratio:4/3;max-height:300px}
+  .about-visual{aspect-ratio:4/3;max-height:340px}
   .footer-inner{grid-template-columns:1fr 1fr}
   .footer-brand{grid-column:1/-1}
   .nav-links,.nav-cta{display:none}
@@ -381,8 +228,6 @@ footer{
 }
 @media(max-width:600px){
   section{padding:72px max(20px,5vw)}
-  .hero h1{letter-spacing:-2px}
-  .hero-stats{gap:32px}
   .form-row{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr}
 }
@@ -391,11 +236,9 @@ footer{
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="nav">
   <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 16 16"><polygon points="8,2 14,12 2,12"/></svg>
-    </div>
+    <div class="nav-logo-icon"><svg viewBox="0 0 16 16"><polygon points="8,2 14,12 2,12"/></svg></div>
     Studio Kraft
   </a>
   <ul class="nav-links">
@@ -405,9 +248,7 @@ footer{
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <a href="#kontakt" class="nav-cta">Erstberatung buchen</a>
-  <div class="nav-burger" id="burger" aria-label="Menü öffnen">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="nav-burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
   <a href="#leistungen">Leistungen</a>
@@ -419,22 +260,26 @@ footer{
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-tag">Personal Training · Arnsberg</div>
-  <h1>Stärker.<span class="accent">Heute.</span></h1>
-  <p class="hero-sub">Individuelle Trainingspläne. Klare Ernährungskonzepte. Ergebnisse, die du siehst und spürst — in weniger Zeit als du denkst.</p>
-  <div class="hero-actions">
-    <a href="#kontakt" class="btn-primary">
-      Kostenloses Erstgespräch
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <a href="#preise" class="btn-secondary">Pakete ansehen</a>
+  <div class="hero-bg-img">
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80" alt="Studio Kraft Gym" loading="eager">
   </div>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="num">200+</div><div class="label">Trainierte Klient:innen</div></div>
-    <div class="hero-stat"><div class="num">8+</div><div class="label">Jahre Erfahrung</div></div>
-    <div class="hero-stat"><div class="num">94%</div><div class="label">Erreichen ihr Ziel</div></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Personal Training · Arnsberg</div>
+    <h1>Stärker.<span class="accent">Heute.</span></h1>
+    <p class="hero-sub">Individuelle Trainingspläne. Klare Ernährungskonzepte. Ergebnisse, die du siehst und spürst — in weniger Zeit als du denkst.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">
+        Kostenloses Erstgespräch
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#preise" class="btn-secondary">Pakete ansehen</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">200+</div><div class="label">Trainierte Klient:innen</div></div>
+      <div class="hero-stat"><div class="num">8+</div><div class="label">Jahre Erfahrung</div></div>
+      <div class="hero-stat"><div class="num">94%</div><div class="label">Erreichen ihr Ziel</div></div>
+    </div>
   </div>
 </section>
 
@@ -445,25 +290,34 @@ footer{
   <div class="reveal reveal-delay-2"><p class="section-sub">Kein generisches Programm von der Stange — jeder Plan entsteht für genau eine Person: dich.</p></div>
   <div class="services-grid reveal reveal-delay-3">
     <div class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M3 8h4M17 8h4M3 16h4M17 16h4M7 12h10"/></svg>
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=80" alt="Personal Training">
       </div>
-      <h3>Personal Training</h3>
-      <p>1:1-Sessions, vollständig auf deine Ziele, deinen Körper und deinen Alltag zugeschnitten. Du kommst — ich übernehme den Rest.</p>
+      <div class="service-body">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M3 8h4M17 8h4M3 16h4M17 16h4M7 12h10"/></svg></div>
+        <h3>Personal Training</h3>
+        <p>1:1-Sessions, vollständig auf deine Ziele, deinen Körper und deinen Alltag zugeschnitten. Du kommst — ich übernehme den Rest.</p>
+      </div>
     </div>
     <div class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=700&q=80" alt="Ernährungscoaching">
       </div>
-      <h3>Ernährungscoaching</h3>
-      <p>Kein Diätplan, sondern ein Konzept, das in deinen Alltag passt. Flexibel, realistisch und mit messbaren Ergebnissen.</p>
+      <div class="service-body">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <h3>Ernährungscoaching</h3>
+        <p>Kein Diätplan, sondern ein Konzept, das in deinen Alltag passt. Flexibel, realistisch und mit messbaren Ergebnissen.</p>
+      </div>
     </div>
     <div class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=80" alt="Online-Coaching">
       </div>
-      <h3>Online-Coaching</h3>
-      <p>Strukturierter Trainingsplan, wöchentliches Check-in und direkte Erreichbarkeit per Nachricht — egal wo du bist.</p>
+      <div class="service-body">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Online-Coaching</h3>
+        <p>Strukturierter Trainingsplan, wöchentliches Check-in und direkte Erreichbarkeit per Nachricht — egal wo du bist.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -475,8 +329,10 @@ footer{
   <div class="reveal reveal-delay-2"><p class="section-sub">Echte Menschen, echte Veränderungen — keine Stock-Fotos, keine erfundenen Vorher-Nachher-Bilder.</p></div>
   <div class="results-grid">
     <div class="result-card reveal reveal-delay-1">
-      <div class="result-visual">−14 kg</div>
-      <div class="result-bar"><div class="result-bar-fill"></div></div>
+      <div class="result-img">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=700&q=80" alt="Krafttraining Ergebnis">
+        <div class="result-stat">−14 kg</div>
+      </div>
       <div class="result-body">
         <strong>Gewichtsverlust in 16 Wochen</strong>
         <p>Ohne Crash-Diät, mit konstantem Kaloriendefizit und progressivem Krafttraining.</p>
@@ -484,8 +340,10 @@ footer{
       </div>
     </div>
     <div class="result-card reveal reveal-delay-2">
-      <div class="result-visual">+22 kg</div>
-      <div class="result-bar"><div class="result-bar-fill"></div></div>
+      <div class="result-img">
+        <img src="https://images.unsplash.com/photo-1546483875-ad9de39aed7c?auto=format&fit=crop&w=700&q=80" alt="Muskelaufbau Ergebnis">
+        <div class="result-stat">+22 kg</div>
+      </div>
       <div class="result-body">
         <strong>Muskelaufbau in 6 Monaten</strong>
         <p>Gesamtgewicht auf der Kniebeuge, kombiniert mit strukturiertem Aufbautraining.</p>
@@ -493,8 +351,10 @@ footer{
       </div>
     </div>
     <div class="result-card reveal reveal-delay-3">
-      <div class="result-visual">−11%</div>
-      <div class="result-bar"><div class="result-bar-fill"></div></div>
+      <div class="result-img">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=700&q=80" alt="Fitness Transformation">
+        <div class="result-stat">−11%</div>
+      </div>
       <div class="result-body">
         <strong>Körperfettreduktion bei Gewichtskonstanz</strong>
         <p>Umverteilung von Fett- zu Muskelmasse ohne Gewichtsabnahme — mit 42 Jahren.</p>
@@ -508,22 +368,18 @@ footer{
 <section class="about" id="trainer">
   <div class="about-inner">
     <div class="about-visual reveal">
-      <div class="about-avatar">JK</div>
+      <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=700&q=80" alt="Jan Kurz — Personal Trainer">
       <div class="about-badge">🏅 Zertifizierter Personal Trainer</div>
     </div>
     <div class="about-content">
       <div class="reveal"><span class="section-tag">Über mich</span></div>
       <div class="reveal reveal-delay-1"><h2 class="section-title">Jan Kurz — Trainer aus Arnsberg.</h2></div>
-      <p class="about-text reveal reveal-delay-2">
-        Ich trainiere seit über 8 Jahren Menschen, die mehr aus sich herausholen wollen — nicht weil sie müssen, sondern weil sie es sich verdient haben. Mein Ansatz ist direkt, ehrlich und funktioniert: kein Bro-Science, keine Wundermittel.
-      </p>
-      <p class="about-text reveal reveal-delay-2">
-        Ich arbeite mit 12 aktiven Klient:innen gleichzeitig — damit jede Zusammenarbeit die Aufmerksamkeit bekommt, die sie braucht. Kein Massengeschäft.
-      </p>
+      <p class="about-text reveal reveal-delay-2">Ich trainiere seit über 8 Jahren Menschen, die mehr aus sich herausholen wollen — nicht weil sie müssen, sondern weil sie es sich verdient haben. Mein Ansatz ist direkt, ehrlich und funktioniert: kein Bro-Science, keine Wundermittel.</p>
+      <p class="about-text reveal reveal-delay-2">Ich arbeite mit 12 aktiven Klient:innen gleichzeitig — damit jede Zusammenarbeit die Aufmerksamkeit bekommt, die sie braucht. Kein Massengeschäft.</p>
       <div class="about-certs reveal reveal-delay-3">
-        <div class="about-cert">Staatlich anerkannter Trainer B-Lizenz (DOSB)</div>
-        <div class="about-cert">Ernährungsberater (IHK)</div>
-        <div class="about-cert">Functional Training Instructor</div>
+        <div class="about-cert"><div class="cert-check">✓</div>Staatlich anerkannter Trainer B-Lizenz (DOSB)</div>
+        <div class="about-cert"><div class="cert-check">✓</div>Ernährungsberater (IHK)</div>
+        <div class="about-cert"><div class="cert-check">✓</div>Functional Training Instructor</div>
       </div>
     </div>
   </div>
@@ -537,26 +393,17 @@ footer{
     <div class="testi-card reveal reveal-delay-1">
       <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <p class="testi-text">„Jan hat mein Training komplett umgekrempelt. Nach drei Monaten Rückenprobleme — einfach weg. Hätte ich früher anfangen sollen."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">ML</div>
-        <div><div class="testi-name">Markus L.</div><div class="testi-meta">Online-Coaching · 5 Monate</div></div>
-      </div>
+      <div class="testi-author"><div class="testi-avatar">ML</div><div><div class="testi-name">Markus L.</div><div class="testi-meta">Online-Coaching · 5 Monate</div></div></div>
     </div>
     <div class="testi-card reveal reveal-delay-2">
       <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <p class="testi-text">„Der Ernährungsplan war das Gamechanger. Keine strenge Diät, aber trotzdem 9 kg runter in zwei Monaten. Ich bin immer noch überrascht."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">SK</div>
-        <div><div class="testi-name">Sandra K.</div><div class="testi-meta">Transform-Paket · 3 Monate</div></div>
-      </div>
+      <p class="testi-text">„Der Ernährungsplan war der Gamechanger. Keine strenge Diät, aber trotzdem 9 kg runter in zwei Monaten. Ich bin immer noch überrascht."</p>
+      <div class="testi-author"><div class="testi-avatar">SK</div><div><div class="testi-name">Sandra K.</div><div class="testi-meta">Transform-Paket · 3 Monate</div></div></div>
     </div>
     <div class="testi-card reveal reveal-delay-3">
       <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <p class="testi-text">„Klar, direkt, ergebnisorientiert. Jan redet nicht drumherum — das schätze ich. Man weiß immer, wo man steht und was als nächstes kommt."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">TW</div>
-        <div><div class="testi-name">Thomas W.</div><div class="testi-meta">Personal Training · 8 Monate</div></div>
-      </div>
+      <div class="testi-author"><div class="testi-avatar">TW</div><div><div class="testi-name">Thomas W.</div><div class="testi-meta">Personal Training · 8 Monate</div></div></div>
     </div>
   </div>
 </section>
@@ -584,7 +431,7 @@ footer{
       <div class="popular-badge">Beliebteste Wahl</div>
       <div class="pricing-name">Transform</div>
       <div class="pricing-price">249 <span>€/Monat</span></div>
-      <div class="pricing-note">Online + 4× Präsenz/Monat · 3 Monate Laufzeit</div>
+      <div class="pricing-note">Online + 4× Präsenz/Monat · 3 Monate</div>
       <div class="pricing-divider"></div>
       <ul class="pricing-features">
         <li class="pricing-feature">Alles aus Starter</li>
@@ -617,95 +464,36 @@ footer{
   <div class="reveal"><span class="section-tag">FAQ</span></div>
   <div class="reveal reveal-delay-1"><h2 class="section-title">Häufige Fragen.</h2></div>
   <div class="faq-list reveal reveal-delay-2">
-    <div class="faq-item">
-      <button class="faq-q">
-        Muss ich vorher schon Sport gemacht haben?
-        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
-      </button>
-      <div class="faq-a">Nein — ganz im Gegenteil. Viele meiner erfolgreichsten Klient:innen haben vorher kaum trainiert. Der Einstieg fällt am schwersten, die Ergebnisse kommen am schnellsten.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Wie läuft das Erstgespräch ab?
-        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
-      </button>
-      <div class="faq-a">30 Minuten, kostenlos, per Video oder persönlich. Ich lerne deine Ziele, deinen Alltag und deine Ausgangslage kennen — und erkläre, wie ich dir konkret helfen kann. Kein Verkaufsgespräch.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Brauche ich ein eigenes Fitnessstudio?
-        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
-      </button>
-      <div class="faq-a">Für Personal Training nutzen wir ein Studio in Arnsberg — du brauchst keine eigene Mitgliedschaft. Für Online-Coaching erstelle ich Pläne für Studio, Homeoffice oder beides.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Was, wenn ich einen Termin absagen muss?
-        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
-      </button>
-      <div class="faq-a">Absagen bis 24h vorher sind kostenlos und können problemlos nachgeholt werden. Das Leben passiert — kein Drama, solange wir kommunizieren.</div>
-    </div>
+    <div class="faq-item"><button class="faq-q">Muss ich vorher schon Sport gemacht haben?<div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></button><div class="faq-a">Nein — ganz im Gegenteil. Viele meiner erfolgreichsten Klient:innen haben vorher kaum trainiert. Der Einstieg fällt am schwersten, die Ergebnisse kommen am schnellsten.</div></div>
+    <div class="faq-item"><button class="faq-q">Wie läuft das Erstgespräch ab?<div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></button><div class="faq-a">30 Minuten, kostenlos, per Video oder persönlich. Ich lerne deine Ziele, deinen Alltag und deine Ausgangslage kennen — und erkläre, wie ich dir konkret helfen kann. Kein Verkaufsgespräch.</div></div>
+    <div class="faq-item"><button class="faq-q">Brauche ich ein eigenes Fitnessstudio?<div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></button><div class="faq-a">Für Personal Training nutzen wir ein Studio in Arnsberg — du brauchst keine eigene Mitgliedschaft. Für Online-Coaching erstelle ich Pläne für Studio, Homeoffice oder beides.</div></div>
+    <div class="faq-item"><button class="faq-q">Was, wenn ich einen Termin absagen muss?<div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div></button><div class="faq-a">Absagen bis 24h vorher sind kostenlos und können problemlos nachgeholt werden. Das Leben passiert — kein Drama, solange wir kommunizieren.</div></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact" id="kontakt">
   <div class="contact-inner">
-    <div class="contact-info">
+    <div>
       <div class="reveal"><span class="section-tag">Kontakt</span></div>
       <div class="reveal reveal-delay-1"><h2 class="section-title">Los geht's.</h2></div>
       <p class="section-sub reveal reveal-delay-2">Schreib mir kurz, was du dir vorstellst — ich melde mich innerhalb von 24h. Das Erstgespräch ist kostenlos und unverbindlich.</p>
       <div class="reveal reveal-delay-3">
-        <div class="contact-detail">
-          <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-          <span>+49 152 000 000 00</span>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <span>jan@studiokraft.de</span>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <span>Arnsberg, Nordrhein-Westfalen</span>
-        </div>
+        <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><span>+49 152 000 000 00</span></div>
+        <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>jan@studiokraft.de</span></div>
+        <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Arnsberg, Nordrhein-Westfalen</span></div>
       </div>
     </div>
     <div class="reveal reveal-delay-2">
       <form id="contact-form">
         <div class="form-row">
-          <div class="form-group">
-            <label>Vorname</label>
-            <input type="text" placeholder="Max" required>
-          </div>
-          <div class="form-group">
-            <label>Nachname</label>
-            <input type="text" placeholder="Mustermann" required>
-          </div>
+          <div class="form-group"><label>Vorname</label><input type="text" placeholder="Max" required></div>
+          <div class="form-group"><label>Nachname</label><input type="text" placeholder="Mustermann" required></div>
         </div>
-        <div class="form-group">
-          <label>E-Mail</label>
-          <input type="email" placeholder="max@beispiel.de" required>
-        </div>
-        <div class="form-group">
-          <label>Dein Ziel</label>
-          <select required>
-            <option value="" disabled selected>Bitte auswählen …</option>
-            <option>Gewicht verlieren</option>
-            <option>Muskeln aufbauen</option>
-            <option>Fitter werden / Ausdauer</option>
-            <option>Körperfett reduzieren</option>
-            <option>Rückenprobleme angehen</option>
-            <option>Sonstiges</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Kurze Nachricht (optional)</label>
-          <textarea placeholder="Was soll ich vor dem Erstgespräch wissen?"></textarea>
-        </div>
-        <button type="submit" class="form-submit">
-          Erstgespräch anfragen
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <div class="form-group"><label>E-Mail</label><input type="email" placeholder="max@beispiel.de" required></div>
+        <div class="form-group"><label>Dein Ziel</label><select required><option value="" disabled selected>Bitte auswählen …</option><option>Gewicht verlieren</option><option>Muskeln aufbauen</option><option>Fitter werden / Ausdauer</option><option>Körperfett reduzieren</option><option>Rückenprobleme angehen</option><option>Sonstiges</option></select></div>
+        <div class="form-group"><label>Kurze Nachricht (optional)</label><textarea placeholder="Was soll ich vor dem Erstgespräch wissen?"></textarea></div>
+        <button type="submit" class="form-submit">Erstgespräch anfragen <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </form>
       <div class="form-success" id="form-success">
         <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -720,89 +508,35 @@ footer{
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="nav-logo">
+      <div class="nav-logo" style="margin-bottom:16px">
         <div class="nav-logo-icon"><svg viewBox="0 0 16 16" fill="white"><polygon points="8,2 14,12 2,12"/></svg></div>
         Studio Kraft
       </div>
       <p>Personal Training & Ernährungscoaching in Arnsberg. Ergebnisse, die du siehst.</p>
     </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#trainer">Trainer</a></li>
-        <li><a href="#preise">Preise</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Pakete</h4>
-      <ul>
-        <li><a href="#preise">Starter</a></li>
-        <li><a href="#preise">Transform</a></li>
-        <li><a href="#preise">Elite</a></li>
-        <li><a href="#kontakt">Erstgespräch</a></li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="#leistungen">Leistungen</a></li><li><a href="#trainer">Trainer</a></li><li><a href="#preise">Preise</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+    <div class="footer-col"><h4>Pakete</h4><ul><li><a href="#preise">Starter</a></li><li><a href="#preise">Transform</a></li><li><a href="#preise">Elite</a></li><li><a href="#kontakt">Erstgespräch</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span>© 2025 Studio Kraft · Jan Kurz</span>
-    <span style="display:flex;gap:20px">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
-    </span>
+    <span style="display:flex;gap:20px"><a href="#">Impressum</a><a href="#">Datenschutz</a></span>
   </div>
 </footer>
 
-<!-- ELVERIX BADGE -->
 <a href="https://elverix.com" class="elverix-badge" target="_blank" rel="noopener">
   <div class="elverix-badge-dot"></div>
   Website erstellt von <strong>Elverix</strong>
 </a>
 
 <script>
-// Mobile nav
-const burger = document.getElementById('burger');
-const mobileNav = document.getElementById('nav-mobile');
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-});
-mobileNav.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    burger.classList.remove('open');
-    mobileNav.classList.remove('open');
-  });
-});
-
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if(!isOpen) item.classList.add('open');
-  });
-});
-
-// Form submit
-document.getElementById('contact-form').addEventListener('submit', e => {
-  e.preventDefault();
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-});
-
-// Nav shadow on scroll
-window.addEventListener('scroll', () => {
-  document.querySelector('nav').style.background =
-    window.scrollY > 20 ? 'rgba(8,8,8,0.95)' : 'rgba(8,8,8,0.7)';
-}, { passive: true });
+const burger=document.getElementById('burger'),mobileNav=document.getElementById('nav-mobile');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileNav.classList.toggle('open')});
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobileNav.classList.remove('open')}));
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open')})});
+document.getElementById('contact-form').addEventListener('submit',e=>{e.preventDefault();document.getElementById('contact-form').style.display='none';document.getElementById('form-success').style.display='block'});
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.background=window.scrollY>20?'rgba(8,8,8,0.95)':'rgba(8,8,8,0.7)'},{ passive:true});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>

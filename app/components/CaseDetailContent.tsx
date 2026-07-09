@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import type { PortfolioCase } from "../lib/data";
 import { SiteMockup } from "./SiteMockup";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
@@ -33,9 +33,22 @@ export function CaseDetailContent({
           </Link>
         )}
 
-        <span className="text-xs uppercase tracking-[0.14em] text-bordeaux-deep">
-          {item.branche} · Konzept
-        </span>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <span className="text-xs uppercase tracking-[0.14em] text-bordeaux-deep">
+            {item.branche} · Konzept
+          </span>
+          {item.demoUrl && (
+            <a
+              href={item.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-bordeaux/40 bg-bordeaux-soft px-4 py-1.5 text-xs font-medium text-bordeaux transition-colors hover:bg-bordeaux/20"
+            >
+              Live Demo ansehen
+              <ArrowUpRight size={13} />
+            </a>
+          )}
+        </div>
         <h1 className="mt-3 font-display text-[clamp(2rem,4.6vw,3.6rem)] font-medium leading-[1.05] tracking-tight text-ink">
           {item.name}
         </h1>

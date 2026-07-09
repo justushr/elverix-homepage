@@ -639,6 +639,119 @@ function PaperieNordlichtAfter({ c, b }: { c: string; b: string }) {
   );
 }
 
+// ─── AFTER: Studio Kraft ─────────────────────────────────────────────────────
+function StudioKraftAfter({ c, b }: { c: string; b: string }) {
+  return (
+    <div className="flex h-full w-full flex-col overflow-hidden" style={{ backgroundColor: b }}>
+      <Chrome url="studio-kraft.de" dot={c} />
+      <div
+        className="relative flex flex-1 flex-col overflow-hidden"
+        style={{ background: `radial-gradient(ellipse 80% 60% at 100% 0%, ${c}22, transparent 60%)` }}
+      >
+        {/* Nav */}
+        <div className="flex shrink-0 items-center justify-between px-4 py-2.5 sm:px-5">
+          <div className="flex items-center gap-1.5">
+            <div
+              className="flex h-4 w-4 items-center justify-center rounded-sm"
+              style={{ backgroundColor: c }}
+            >
+              <div className="h-1.5 w-1.5 rounded-sm bg-black/70" />
+            </div>
+            <div>
+              <div className="text-[9px] font-black uppercase tracking-widest sm:text-[10px]" style={{ color: "#fff" }}>
+                Studio Kraft
+              </div>
+              <div
+                className="text-[6px] uppercase tracking-[0.1em] sm:text-[6.5px]"
+                style={{ color: `${c}80` }}
+              >
+                Personal Training
+              </div>
+            </div>
+          </div>
+          <span
+            className="rounded-full px-2.5 py-0.5 text-[7px] font-bold sm:text-[8px]"
+            style={{ backgroundColor: c, color: "#fff" }}
+          >
+            Beratung
+          </span>
+        </div>
+        {/* Hero */}
+        <div className="flex flex-1 flex-col justify-center px-4 sm:px-5">
+          <p
+            className="text-[7px] uppercase tracking-[0.2em] sm:text-[8px]"
+            style={{ color: `${c}90` }}
+          >
+            Personal Training · Arnsberg
+          </p>
+          <h2
+            className="mt-1.5 font-black uppercase leading-none sm:mt-2"
+            style={{ color: "#fff", fontSize: "clamp(14px, 3.2vw, 28px)" }}
+          >
+            Stärker.
+            <br />
+            <span style={{ color: c }}>Heute.</span>
+          </h2>
+          <p
+            className="mt-1.5 text-[7.5px] leading-relaxed sm:text-[8.5px]"
+            style={{ color: "rgba(255,255,255,0.4)", maxWidth: "22ch" }}
+          >
+            Individuelle Trainingspläne. Messbare Ergebnisse.
+          </p>
+          <div className="mt-2.5 flex items-center gap-2">
+            <span
+              className="rounded-full px-2.5 py-1 text-[7px] font-bold sm:text-[8px]"
+              style={{ backgroundColor: c, color: "#fff" }}
+            >
+              Erstberatung buchen
+            </span>
+            <span
+              className="text-[7px] underline underline-offset-2 sm:text-[8px]"
+              style={{ color: "rgba(255,255,255,0.3)" }}
+            >
+              Pakete ansehen
+            </span>
+          </div>
+        </div>
+        {/* Paket-Kacheln */}
+        <div className="grid shrink-0 grid-cols-3 gap-1 px-4 pb-3 sm:gap-1.5 sm:px-5">
+          {[
+            { name: "Starter", sessions: "8 Sessions" },
+            { name: "Transform", sessions: "20 Sessions", hot: true },
+            { name: "Elite", sessions: "Unlimited" },
+          ].map(({ name, sessions, hot }) => (
+            <div
+              key={name}
+              className="rounded-lg p-2"
+              style={{
+                backgroundColor: hot ? `${c}18` : "rgba(255,255,255,0.04)",
+                border: `1px solid ${hot ? c + "40" : c + "14"}`,
+              }}
+            >
+              <div
+                className="mb-1 h-0.5 w-4 rounded-full"
+                style={{ backgroundColor: hot ? c : `${c}40` }}
+              />
+              <p
+                className="text-[6.5px] font-bold uppercase tracking-wide sm:text-[7.5px]"
+                style={{ color: hot ? "#fff" : "rgba(255,255,255,0.45)" }}
+              >
+                {name}
+              </p>
+              <p
+                className="mt-0.5 text-[6px] sm:text-[6.5px]"
+                style={{ color: hot ? `${c}90` : "rgba(255,255,255,0.3)" }}
+              >
+                {sessions}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── AFTER: Generischer Fallback ──────────────────────────────────────────────
 function GenericAfter({
   businessName,
@@ -764,6 +877,8 @@ export function SiteMockup({
       return <PraxisLindenplatzAfter c={colorFrom} b={colorTo} />;
     case "papeterie-nordlicht":
       return <PaperieNordlichtAfter c={colorFrom} b={colorTo} />;
+    case "studio-kraft":
+      return <StudioKraftAfter c={colorFrom} b={colorTo} />;
     default:
       return (
         <GenericAfter businessName={businessName} branche={branche} c={colorFrom} b={colorTo} />

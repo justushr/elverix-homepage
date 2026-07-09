@@ -123,6 +123,7 @@ export type PortfolioCase = {
   outcome: string;
   colorFrom: string;
   colorTo: string;
+  demoUrl?: string;
 };
 
 export const portfolioCases: PortfolioCase[] = [
@@ -221,6 +222,23 @@ export const portfolioCases: PortfolioCase[] = [
       "Auch wer den Laden noch nicht kennt, bekommt online einen Eindruck, der neugierig auf den Besuch vor Ort macht.",
     colorFrom: "#7c86a1",
     colorTo: "#2f3444",
+  },
+  {
+    slug: "studio-kraft",
+    branche: "Fitness",
+    name: "Studio Kraft",
+    title: "Von Instagram-DMs zur strukturierten Erstberatung online",
+    summary:
+      "Ein Konzept dafür, wie ein Personal Trainer seine Anfragen professionalisiert — ohne Instagram als einzige Kontaktstelle.",
+    challenge:
+      "Der Personal Trainer war über Instagram bekannt, aber dort fand man weder klare Preise noch buchbare Termine. Interessenten mussten erst eine DM schicken, wochenlang auf Antwort warten — und landeten meist doch woanders.",
+    solution:
+      "Eine klare, kraftvolle One-Page-Website mit Paketübersicht, Kundenergebnissen und einem kurzen Erstberatungs-Formular. Keine Ablenkung, keine überflüssigen Seiten — nur die Informationen, die überzeugen.",
+    outcome:
+      "Neue Anfragen kommen jetzt strukturiert per Formular rein. Die Instagram-Seite leitet direkt auf die Website — und konvertiert statt zu unterhalten.",
+    colorFrom: "#f97316",
+    colorTo: "#120f0c",
+    demoUrl: "/demo/studio-kraft.html",
   },
 ];
 

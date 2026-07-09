@@ -33,28 +33,37 @@ export function CaseDetailContent({
           </Link>
         )}
 
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <span className="text-xs uppercase tracking-[0.14em] text-bordeaux-deep">
-            {item.branche} · Konzept
-          </span>
-          {item.demoUrl && (
-            <a
-              href={item.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-bordeaux/40 bg-bordeaux-soft px-4 py-1.5 text-xs font-medium text-bordeaux transition-colors hover:bg-bordeaux/20"
-            >
-              Live Demo ansehen
-              <ArrowUpRight size={13} />
-            </a>
-          )}
-        </div>
+        <span className="text-xs uppercase tracking-[0.14em] text-bordeaux-deep">
+          {item.branche} · Konzept
+        </span>
         <h1 className="mt-3 font-display text-[clamp(2rem,4.6vw,3.6rem)] font-medium leading-[1.05] tracking-tight text-ink">
           {item.name}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{item.title}</p>
 
-        <div className="mt-8 rounded-2xl border border-bordeaux-soft bg-bordeaux-soft/40 px-5 py-4 text-sm leading-relaxed text-ink-soft">
+        {item.demoUrl && (
+          <a
+            href={item.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 flex items-center justify-between gap-4 rounded-2xl border border-bordeaux/30 bg-bordeaux-deep px-6 py-4 text-linen shadow-glow transition-all hover:scale-[1.01] hover:shadow-glow md:px-8"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10">
+                <ArrowUpRight size={18} />
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Fertige Website ansehen</p>
+                <p className="text-xs text-linen/60">Vollständige Demo — klicken zum Öffnen</p>
+              </div>
+            </div>
+            <span className="shrink-0 rounded-full bg-white/15 px-4 py-1.5 text-xs font-medium">
+              Live Demo →
+            </span>
+          </a>
+        )}
+
+        <div className="mt-6 rounded-2xl border border-bordeaux-soft bg-bordeaux-soft/40 px-5 py-4 text-sm leading-relaxed text-ink-soft">
           <strong className="text-ink">Hinweis:</strong> Dieses Projekt ist ein
           Gestaltungskonzept von Elverix zur Veranschaulichung unserer Arbeitsweise —
           kein reales Kundenprojekt.

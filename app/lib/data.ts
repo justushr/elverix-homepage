@@ -240,6 +240,23 @@ export const portfolioCases: PortfolioCase[] = [
     colorTo: "#120f0c",
     demoUrl: "/demo/studio-kraft.html",
   },
+  {
+    slug: "cafe-luise",
+    branche: "Café",
+    name: "Café Luise",
+    title: "Vom leeren Tisch zur Online-Reservierung in drei Klicks",
+    summary:
+      "Ein Konzept dafür, wie ein inhabergeführtes Café online genauso einladend wirkt wie der erste Kaffee am Morgen.",
+    challenge:
+      "Das Café Luise hatte Stammgäste, aber keine Reichweite. Keine Website, keine Reservierungsmöglichkeit, kein Ort für die Speisekarte — nur ein Instagram-Profil mit unregelmäßigen Posts. Neue Gäste fanden das Café bestenfalls per Zufall.",
+    solution:
+      "Eine warme, einladende Website mit Tagesmenü, Öffnungszeiten auf einen Blick und einem unkomplizierten Reservierungsformular — gestaltet wie das Café selbst: persönlich, ohne Schnickschnack.",
+    outcome:
+      "Wer das Café sucht, findet es. Wer es noch nicht kennt, will sofort vorbeikommen. Tischreservierungen laufen jetzt online, ohne dass jemand ans Telefon muss.",
+    colorFrom: "#C8854A",
+    colorTo: "#1A0E08",
+    demoUrl: "/demo/cafe-luise.html",
+  },
 ];
 
 export type WhyItem = {

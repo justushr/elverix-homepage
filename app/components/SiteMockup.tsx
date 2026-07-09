@@ -639,6 +639,99 @@ function PaperieNordlichtAfter({ c, b }: { c: string; b: string }) {
   );
 }
 
+// ─── AFTER: Café Luise ───────────────────────────────────────────────────────
+function CafeLuiseAfter({ c, b }: { c: string; b: string }) {
+  return (
+    <div className="flex h-full w-full flex-col overflow-hidden" style={{ backgroundColor: b }}>
+      <Chrome url="cafe-luise.de" dot={c} />
+      <div
+        className="relative flex flex-1 flex-col overflow-hidden"
+        style={{ background: `radial-gradient(ellipse 90% 70% at 30% -10%, ${c}25, transparent 55%)` }}
+      >
+        {/* Nav */}
+        <div className="flex shrink-0 items-center justify-between px-4 py-2.5 sm:px-5">
+          <div className="flex items-center gap-1.5">
+            <div
+              className="flex h-3.5 w-3.5 items-center justify-center rounded-full"
+              style={{ border: `1.5px solid ${c}` }}
+            >
+              <div className="h-1 w-1 rounded-full" style={{ backgroundColor: c }} />
+            </div>
+            <span className="text-[9px] font-bold italic tracking-wide sm:text-[10px]" style={{ color: "#fff" }}>
+              Café Luise
+            </span>
+          </div>
+          <span
+            className="rounded-full px-2.5 py-0.5 text-[7px] font-bold sm:text-[8px]"
+            style={{ backgroundColor: c, color: "#fff" }}
+          >
+            Reservieren
+          </span>
+        </div>
+        {/* Trennlinie */}
+        <div className="mx-4 h-px sm:mx-5" style={{ backgroundColor: `${c}25` }} />
+        {/* Hero */}
+        <div className="flex flex-1 flex-col justify-center px-4 sm:px-5">
+          <p
+            className="text-[7px] uppercase tracking-[0.18em] sm:text-[8px]"
+            style={{ color: `${c}80` }}
+          >
+            Café & Küche · Arnsberg
+          </p>
+          <h2
+            className="mt-1.5 font-bold italic leading-snug sm:mt-2"
+            style={{ color: "#fff", fontSize: "clamp(12px, 2.8vw, 24px)", maxWidth: "16ch" }}
+          >
+            Ein Platz zum
+            <br />
+            <span style={{ color: c }}>Ankommen.</span>
+          </h2>
+          <p
+            className="mt-1.5 text-[7.5px] leading-relaxed sm:text-[8.5px]"
+            style={{ color: "rgba(255,255,255,0.4)", maxWidth: "24ch" }}
+          >
+            Frühstück · Mittagstisch · Kaffee & Kuchen
+          </p>
+          <div className="mt-2.5 flex items-center gap-2">
+            <span
+              className="rounded-full px-2.5 py-1 text-[7px] font-bold sm:text-[8px]"
+              style={{ backgroundColor: c, color: "#fff" }}
+            >
+              Tisch reservieren
+            </span>
+            <span
+              className="text-[7px] underline underline-offset-2 sm:text-[8px]"
+              style={{ color: "rgba(255,255,255,0.3)" }}
+            >
+              Speisekarte
+            </span>
+          </div>
+        </div>
+        {/* Tagesangebot-Kacheln */}
+        <div className="grid shrink-0 grid-cols-3 gap-1 px-4 pb-3 sm:gap-1.5 sm:px-5">
+          {[
+            { label: "Frühstück", sub: "ab 8 Uhr" },
+            { label: "Mittagstisch", sub: "11–14 Uhr" },
+            { label: "Kuchen", sub: "tägl. frisch" },
+          ].map(({ label, sub }) => (
+            <div
+              key={label}
+              className="rounded-lg p-2"
+              style={{ backgroundColor: "rgba(255,255,255,0.05)", border: `1px solid ${c}20` }}
+            >
+              <div className="mb-1 h-0.5 w-3 rounded-full" style={{ backgroundColor: `${c}70` }} />
+              <p className="text-[6.5px] font-semibold sm:text-[7.5px]" style={{ color: "rgba(255,255,255,0.6)" }}>
+                {label}
+              </p>
+              <p className="text-[5.5px] sm:text-[6.5px]" style={{ color: `${c}70` }}>{sub}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── AFTER: Studio Kraft ─────────────────────────────────────────────────────
 function StudioKraftAfter({ c, b }: { c: string; b: string }) {
   return (
@@ -879,6 +972,8 @@ export function SiteMockup({
       return <PaperieNordlichtAfter c={colorFrom} b={colorTo} />;
     case "studio-kraft":
       return <StudioKraftAfter c={colorFrom} b={colorTo} />;
+    case "cafe-luise":
+      return <CafeLuiseAfter c={colorFrom} b={colorTo} />;
     default:
       return (
         <GenericAfter businessName={businessName} branche={branche} c={colorFrom} b={colorTo} />

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
@@ -57,22 +58,62 @@ export function PortfolioCard({
             aspectRatio: featured ? "16/9" : "4/3",
           }}
         >
-          <SiteMockup
-            variant="after"
-            businessName={item.name}
-            branche={item.branche}
-            colorFrom={item.colorFrom}
-            colorTo={item.colorTo}
-            slug={item.slug}
-          />
-
-          {/* Hover overlay */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            style={{
-              background: `radial-gradient(ellipse 70% 60% at 50% 100%, ${item.colorFrom}22, transparent 70%)`,
-            }}
-          />
+          {item.thumbnailPhoto ? (
+            <>
+              {/* Photo */}
+              <Image
+                src={item.thumbnailPhoto}
+                alt={item.name}
+                fill
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              {/* Subtle color tint from top-left */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: `linear-gradient(135deg, ${item.colorFrom}30 0%, transparent 55%)`,
+                }}
+              />
+              {/* Bottom fade to dark background */}
+              <div
+                className="absolute inset-x-0 bottom-0 h-2/3"
+                style={{
+                  background: `linear-gradient(to top, ${item.colorTo} 0%, ${item.colorTo}cc 25%, ${item.colorTo}44 60%, transparent 100%)`,
+                }}
+              />
+              {/* Bottom text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <p
+                  className="text-[10px] font-semibold uppercase tracking-[0.18em]"
+                  style={{ color: item.colorFrom }}
+                >
+                  {item.branche}
+                </p>
+                <p className="mt-1 font-display text-lg font-medium leading-snug text-white">
+                  {item.name}
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <SiteMockup
+                variant="after"
+                businessName={item.name}
+                branche={item.branche}
+                colorFrom={item.colorFrom}
+                colorTo={item.colorTo}
+                slug={item.slug}
+              />
+              {/* Hover overlay */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background: `radial-gradient(ellipse 70% 60% at 50% 100%, ${item.colorFrom}22, transparent 70%)`,
+                }}
+              />
+            </>
+          )}
 
           {/* Demo badge */}
           {item.demoUrl && (

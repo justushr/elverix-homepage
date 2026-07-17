@@ -124,6 +124,7 @@ export type PortfolioCase = {
   colorFrom: string;
   colorTo: string;
   demoUrl?: string;
+  thumbnailPhoto?: string;
 };
 
 export const portfolioCases: PortfolioCase[] = [
@@ -143,6 +144,7 @@ export const portfolioCases: PortfolioCase[] = [
     colorFrom: "#f97316",
     colorTo: "#120f0c",
     demoUrl: "/demo/studio-kraft.html",
+    thumbnailPhoto: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
   },
   {
     slug: "cafe-luise",
@@ -160,6 +162,7 @@ export const portfolioCases: PortfolioCase[] = [
     colorFrom: "#C8854A",
     colorTo: "#1A0E08",
     demoUrl: "/demo/cafe-luise.html",
+    thumbnailPhoto: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
